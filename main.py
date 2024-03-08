@@ -2,24 +2,24 @@
 
 def main():
     text = read_book("books/frankenstein.txt")
-    print(f"Frankenstein contains {count_words(text)} words.")
-    letters = count_letters(text)
-    print(f"Frankenstein contains the following letter counts:")
-    print(letters)
+    word_count = count_words(text)
+    character_counts = count_characters(text)
+    print(word_count)
+    print(character_counts)
 
 def count_words(text):
     words = text.split()
     return len(words)
 
-def count_letters(text):
-    letters = {}
-    for letter in text:
-        c = letter.lower()
-        if c in letters:
-            letters[c] += 1
+def count_characters(text):
+    characters = {}
+    for char in text:
+        ci_char = char.lower()
+        if ci_char in characters:
+            characters[ci_char] += 1
         else:
-            letters[c] = 1
-    return letters
+            characters[ci_char] = 1
+    return characters
 
 def read_book(book_path):
     with open(book_path) as f:
