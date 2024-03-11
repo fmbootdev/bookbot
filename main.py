@@ -29,6 +29,7 @@ def read_book(book_path):
 def get_report(book_path, word_count, letter_counts):
     report = get_report_preamble(book_path, word_count)
     lc_list = collect_letter_counts(letter_counts)
+    lc_list = sort_letter_counts(lc_list)
     report = add_letter_counts(lc_list, report)
     return report
 
@@ -57,7 +58,6 @@ def add_letter_counts_to_report(lc_list, report):
     return report
 
 def add_letter_counts(lc_list, report):
-    lc_list = sort_letter_counts(lc_list)
     report = add_letter_counts_to_report(lc_list, report)
     return report
 
