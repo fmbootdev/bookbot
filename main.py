@@ -38,10 +38,14 @@ def get_report_preamble(book_path, word_count):
         f"\n"
     )
 
-def add_letter_counts(letter_counts, report):
+def collect_letter_counts(letter_counts):
     lc_list = []
     for key in letter_counts.keys():
         lc_list.append({"letter": key, "count": letter_counts[key]})
+    return lc_list
+
+def add_letter_counts(letter_counts, report):
+    lc_list = collect_letter_counts(letter_counts)
 
     def sort_on(dict):
         return dict["count"]
