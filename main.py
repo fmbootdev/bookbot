@@ -27,13 +27,16 @@ def read_book(book_path):
         return f.read()
 
 def get_report(book_path, word_count, letter_counts):
-    report = (
+    report = get_report_preamble(book_path, word_count)
+    report = add_letter_counts(letter_counts, report)
+    return report
+
+def get_report_preamble(book_path, word_count):
+    return (
         f"--- Begin report of {book_path} ---\n"
         f"{word_count} words found in the document\n"
         f"\n"
     )
-    report = add_letter_counts(letter_counts, report)
-    return report
 
 def add_letter_counts(letter_counts, report):
     letters = []
