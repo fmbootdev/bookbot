@@ -39,16 +39,16 @@ def get_report_preamble(book_path, word_count):
     )
 
 def add_letter_counts(letter_counts, report):
-    letters = []
+    lc_list = []
     for key in letter_counts.keys():
-        letters.append({"letter": key, "count": letter_counts[key]})
+        lc_list.append({"letter": key, "count": letter_counts[key]})
 
     def sort_on(dict):
         return dict["count"]
 
-    letters.sort(reverse=True, key=sort_on)
+    lc_list.sort(reverse=True, key=sort_on)
 
-    for l in letters:
+    for l in lc_list:
         report += f"The '{l["letter"]}' character was found {l["count"]} times\n"
 
     return report
