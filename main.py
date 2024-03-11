@@ -40,6 +40,11 @@ def add_letter_counts(letter_counts, report):
     for key in letter_counts.keys():
         letters.append({"letter": key, "count": letter_counts[key]})
 
+    def sort_on(dict):
+        return dict["count"]
+
+    letters.sort(reverse=True, key=sort_on)
+
     for l in letters:
         report += f"The '{l["letter"]}' character was found {l["count"]} times\n"
 
