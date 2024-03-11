@@ -28,7 +28,8 @@ def read_book(book_path):
 
 def get_report(book_path, word_count, letter_counts):
     report = get_report_preamble(book_path, word_count)
-    report = add_letter_counts(letter_counts, report)
+    lc_list = collect_letter_counts(letter_counts)
+    report = add_letter_counts(lc_list, report)
     return report
 
 def get_report_preamble(book_path, word_count):
@@ -55,8 +56,7 @@ def add_letter_counts_to_report(lc_list, report):
         report += f"The '{l["letter"]}' character was found {l["count"]} times\n"
     return report
 
-def add_letter_counts(letter_counts, report):
-    lc_list = collect_letter_counts(letter_counts)
+def add_letter_counts(lc_list, report):
     lc_list = sort_letter_counts(lc_list)
     report = add_letter_counts_to_report(lc_list, report)
     return report
