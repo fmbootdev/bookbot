@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 
 def main():
-    text = read_book("books/frankenstein.txt")
+    path = "books/frankenstein.txt"
+    text = read_book(path)
     word_count = count_words(text)
     letter_counts = count_letters(text)
-    print(word_count)
-    print(letter_counts)
+    print(get_report(path, word_count, letter_counts))
 
 def count_words(text):
     words = text.split()
@@ -25,5 +25,24 @@ def count_letters(text):
 def read_book(book_path):
     with open(book_path) as f:
         return f.read()
+
+def get_report(book_path, word_count, letter_counts):
+    report = (
+        f"--- Begin report of {book_path} ---\n"
+        f"{word_count} words found in the document\n"
+        f"\n"
+    )
+    report = add_letter_counts(letter_counts, report)
+    return report
+
+def add_letter_counts(letter_counts, report):
+    letters = []
+    for key in letter_counts.keys():
+        letters.append({"letter": key, "count": letter_counts[key]})
+
+    for l in letters:
+        report += f"The '{l["letter"]}' character was found {l["count"]} times\n"
+
+    return report
 
 main()
