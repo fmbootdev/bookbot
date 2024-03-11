@@ -7,6 +7,10 @@ def main():
     letter_counts = count_letters(text)
     print(get_report(path, word_count, letter_counts))
 
+def read_book(book_path):
+    with open(book_path) as f:
+        return f.read()
+
 def count_words(text):
     words = text.split()
     return len(words)
@@ -21,10 +25,6 @@ def count_letters(text):
             else:
                 letters[ci_char] = 1
     return letters
-
-def read_book(book_path):
-    with open(book_path) as f:
-        return f.read()
 
 def get_report(book_path, word_count, letter_counts):
     report = get_report_preamble(book_path, word_count)
