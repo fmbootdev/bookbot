@@ -50,13 +50,15 @@ def sort_letter_counts(lc_list):
     lc_list.sort(reverse=True, key=sort_on)
     return lc_list
 
+def add_letter_counts_to_report(lc_list, report):
+    for l in lc_list:
+        report += f"The '{l["letter"]}' character was found {l["count"]} times\n"
+    return report
+
 def add_letter_counts(letter_counts, report):
     lc_list = collect_letter_counts(letter_counts)
     lc_list = sort_letter_counts(lc_list)
-
-    for l in lc_list:
-        report += f"The '{l["letter"]}' character was found {l["count"]} times\n"
-
+    report = add_letter_counts_to_report(lc_list, report)
     return report
 
 main()
